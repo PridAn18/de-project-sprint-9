@@ -1,13 +1,31 @@
-# Проект 9-го спринта
+# Проект за 9 спринт
 
-### Как работать с репозиторием
-1. В вашем GitHub-аккаунте автоматически создастся репозиторий `de-project-sprint-9` после того, как вы привяжете свой GitHub-аккаунт на Платформе.
-2. Скопируйте репозиторий на свой компьютер. В качестве пароля укажите ваш `Access Token`, который нужно получить на странице [Personal Access Tokens](https://github.com/settings/tokens)):
-	* `git clone https://github.com/{{ username }}/de-project-sprint-9.git`
-3. Перейдите в директорию с проектом: 
-	* `cd de-project-sprint-9`
-4. Выполните проект и сохраните получившийся код в локальном репозитории:
-	* `git add .`
-	* `git commit -m 'my best commit'`
-5. Обновите репозиторий в вашем GitHub-аккаунте:
-	* `git push origin main`
+Сервисы в реджистри
+
+```yaml
+image:
+  repository: "cr.yandex/crpb95qer8edm6efcjde/stg_service"
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "version-1.0"
+```
+
+```yaml
+image:
+  repository: "cr.yandex/crpb95qer8edm6efcjde/dds_service"
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "version-1.0"
+```
+
+```yaml
+image:
+  repository: "cr.yandex/crpb95qer8edm6efcjde/cdm_service"
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "version-1.0"
+```
+
+Дашбоард [ссылка](https://datalens.yandex/3wo87v6i3t0qp)
+
+<img src="solution/img/dashboard.png" alt="Contact Point" width="auto"/>

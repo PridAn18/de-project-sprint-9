@@ -4,8 +4,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask
 
 from app_config import AppConfig
-from cdm_loader.repository.cdm_repository import CdmRepository
-from cdm_loader.cdm_message_processor_job import CdmMessageProcessor
+from stg_loader.repository.stg_repository import StgRepository
+from stg_loader.stg_message_processor_job import StgMessageProcessor
 
 app = Flask(__name__)
 
@@ -25,11 +25,15 @@ if __name__ == '__main__':
     # Инициализируем конфиг. Для удобства, вынесли логику получения значений переменных окружения в отдельный класс.
     config = AppConfig()
     kafka_consumer = config.kafka_consumer()
-    cdm_repository = CdmRepository(config.pg_warehouse_db())
+    kafka_producer = config.kafka_producer()
+    redis_client = config.redis_client()
+    stg_repository = StgRepository(config.pg_warehouse_db())
     # Инициализируем процессор сообщений.
-    proc = CdmMessageProcessor(
+    proc = StgMessageProcessor(
         consumer=kafka_consumer,
-        cdm_repository=cdm_repository,
+        producer=kafka_producer,
+        redis_client=redis_client,
+        stg_repository=stg_repository,
         batch_size=100,  # Или любое другое значение по умолчанию
         logger=app.logger
     )

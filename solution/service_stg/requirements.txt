@@ -6,4 +6,3 @@ psycopg
 psycopg-binary
 pydantic
 redis
-uuid
